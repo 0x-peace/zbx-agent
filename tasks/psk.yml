@@ -1,0 +1,44 @@
+---
+- name: Checking zabbix.psk
+  stat: path=/etc/zabbix/zabbix.psk
+  register: zabbix_psk_file
+
+- name: Generating PSK
+  command: openssl rand -hex 32
+  register: psk_gen
+  when: not zabbix_psk_file.stat.exists
+
+- name: Saving PSK
+  lineinfile:
+    dest: /etc/zabbix/zabbix.psk
+    line: "{{ psk_gen.stdout }}"
+    create: yes
+  when: not zabbix_psk_file.stat.exists
+
+- name: Configure zabbix agent
+  lineinfile:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  with_items:
+    - { line: 'Server={{ zbx_srv }}', regexp: '^Server=.*' }
+    - { line: 'ServerActive={{ zbx_srv }}', regexp: '^ServerActive=.*' }
+    - { line: 'Hostname={{ ansible_fqdn }}', regexp: '^Hostname=.*'}
+  notify: restart zbx-agent
+
+- name: Configure zabbix agent TLS
+  lineinfile:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  with_items:
+    - { line: 'TLSConnect=psk', regexp: '^TLSConnect=.*' }
+    - { line: 'TLSAccept=psk', regexp: '^TLSAccept=.*' }
+    - { line: 'TLSPSKIdentity={{ ansible_fqdn }}', regexp: '^TLSPSKIdentity=.*' }
+    - { line: 'TLSPSKFile=/etc/zabbix/zabbix.psk', regexp: '^TLSPSKFile=.*' }
+  notify: restart zbx-agent
+  when: zabbix_agent_tls
+
+- name: Print zabbix.psk
+  debug: msg={{ psk_gen.stdout }}
+  when: psk_gen and not zabbix_psk_file.stat.exists

@@ -1,0 +1,34 @@
+---
+- name: Install zabbix-api module
+  pip:
+    name: zabbix-api
+  delegate_to: 127.0.0.1
+  when: zabbix_register and psk_gen
+
+- name: Add server to Zabbix server
+  zabbix_host:
+    server_url: "{{ zabbix_server_url }}"
+    login_user: "{{ zabbix_server_user }}"
+    login_password: "{{ zabbix_server_pass }}"
+    host_name: "{{ ansible_fqdn }}"
+    visible_name: "{{ ansible_fqdn }}"
+    host_groups: "{{ item.host_groups }}"
+    link_templates: "{{ item.host_templates }}"
+    status: enabled
+    state: present
+    inventory_mode: disabled
+    tls_psk_identity: "{{ ansible_fqdn }}"
+    tls_connect: 2
+    tls_accept: 2
+    tls_psk: "{{ psk_gen.stdout }}"
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: "{{ ansible_default_ipv4.address }}"
+        dns: ""
+        port: 10050
+  with_items:
+    - "{{ zabbix }}"
+  delegate_to: 127.0.0.1
+  when: zabbix_register and not zabbix_psk_file.stat.exists

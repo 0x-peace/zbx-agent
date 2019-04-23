@@ -1,0 +1,14 @@
+---
+- name: Install repo from zabbix_agent 3
+  yum:
+    name: 'http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm'
+  when: ansible_distribution_major_version == '7'
+
+- name: Install zabbix-agent
+  yum:
+    name:
+      - zabbix-agent
+      - openssl
+    state: present
+    update_cache: yes
+  when: ansible_distribution_major_version == '7'

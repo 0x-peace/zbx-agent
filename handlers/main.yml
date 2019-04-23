@@ -1,0 +1,12 @@
+---
+- name: restart zbx-agent
+  systemd:
+    name: zabbix-agent
+    state: restarted
+    enabled: yes
+
+- name: start zbx-agent
+  systemd:
+    name: zabbix-agent
+    state: started
+    enabled: yes

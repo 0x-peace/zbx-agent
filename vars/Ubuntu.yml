@@ -1,0 +1,2 @@
+---
+zabbix_repo: "http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }}"
