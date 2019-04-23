@@ -3,18 +3,20 @@ Role Name
 
 Installing Zabbix agent.
 
-Requirements
+OS Platforms
 ------------
 
-None requirements
+| Ubuntu | bionic |
+| Ubuntu | xenial |
+| Centos | 7 |
 
 Role Variables
 --------------
 | Variable       | Description |
 |--------------- | ----------- |
-| zabbix_version | zabbix package version|
-| zbx_srv | zabbix server variable|
-| zbx_proxy | zabbix proxy server |
+| `zabbix_version` | zabbix package version|
+| `zbx_srv` | zabbix server variable|
+| `zbx_proxy` | zabbix proxy server |
 
 Example Inventory
 ------------
