@@ -41,6 +41,7 @@
         ip: "{{ ansible_default_ipv4.address }}"
         dns: ""
         port: 10050
+    proxy: "{{ zbx_proxy }}"
   with_items:
     - "{{ zabbix }}"
   delegate_to: 127.0.0.1
