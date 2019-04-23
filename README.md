@@ -5,10 +5,11 @@ Installing Zabbix agent.
 
 OS Platforms
 ------------
-
+| OS     | name   |
+| ------ | ------ |
 | Ubuntu | bionic |
 | Ubuntu | xenial |
-| Centos | 7 |
+| Centos | 7      |
 
 Role Variables
 --------------
