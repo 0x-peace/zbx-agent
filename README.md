@@ -10,7 +10,11 @@ None requirements
 
 Role Variables
 --------------
-
+| Variable       | Description |
+|--------------- | ----------- |
+| zabbix_version | zabbix package version|
+| zbx_srv | zabbix server variable|
+| zbx_proxy | zabbix proxy server |
 
 Example Inventory
 ------------
