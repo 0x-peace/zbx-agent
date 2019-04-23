@@ -46,3 +46,4 @@
     - "{{ zabbix }}"
   delegate_to: 127.0.0.1
   when: zabbix_register and not zabbix_psk_file.stat.exists
+  notify: restart zbx-agent
