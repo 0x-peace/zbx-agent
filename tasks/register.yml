@@ -7,14 +7,14 @@
 - name: Update pip
   pip:
     name: pip
-    state: latest
+    state: present
   delegate_to: 127.0.0.1
   when: zabbix_register and psk_gen
 
 - name: Install zabbix-api module
   pip:
     name: zabbix-api
-    state: latest
+    state: present
   delegate_to: 127.0.0.1
   when: zabbix_register and psk_gen
 
