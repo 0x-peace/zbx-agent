@@ -10,4 +10,3 @@ molecule:
   script:
     - sudo ansible-lint $(find . -regex ".*\.\(yml\)")
     - sudo molecule test -s default
-
