@@ -1,9 +1,4 @@
 ---
-- name: Install depended packages
-  apt:
-    name: python-pip
-    state: present
-
 - name: Update pip
   pip:
     name: pip

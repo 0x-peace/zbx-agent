@@ -18,3 +18,10 @@
       - openssl
     state: present
     update_cache: yes
+
+- name: Install zabbix register dependency
+  apt:
+    name:
+      - python-pip
+    state: present
+    update_cache: yes
