@@ -4,7 +4,6 @@ zabbix_version_el: "4.0-1.el7"
 zbx_srv: "zabbix.egs.kz"
 zbx_proxy: ""
 zabbix_agent_tls: True
-zabbix_repo: "http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }}"
 
 zabbix_register: False
 zabbix_server_url: "http://zabbix.egs.kz/zabbix"

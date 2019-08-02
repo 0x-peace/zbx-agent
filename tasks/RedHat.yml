@@ -1,22 +1,12 @@
 ---
 - name: Install repo from zabbix_agent 3
   yum:
-    name: 'http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/7/x86_64/zabbix-release-{{ zabbix_version_el }}.noarch.rpm'
-  when: ansible_distribution_major_version == '7'
+    name: "{{ zabbix_repo }}/zabbix-release-{{ zabbix_version }}-1.el7.noarch.rpm"
 
 - name: Install zabbix-agent
   yum:
     name:
       - zabbix-agent
       - openssl
-      - python-pip
-    state: present
-    update_cache: yes
-  when: ansible_distribution_major_version == '7'
-
-- name: Install zabbix register dependency
-  yum:
-    name:
-      - python-pip
     state: present
     update_cache: yes
