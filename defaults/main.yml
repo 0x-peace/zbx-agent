@@ -5,7 +5,7 @@ zbx_proxy: ""
 zabbix_agent_tls: True
 
 zabbix_register: False
-zabbix_server_url: "http://zabbix.egs.kz/zabbix"
+zabbix_server_url: "https://zabbix.egs.kz/zabbix"
 zabbix_server_user: ""
 zabbix_server_pass: ""
 zabbix:
