@@ -1,5 +1,5 @@
 ---
-zabbix_version: "3.4"
+zabbix_version: "4.0"
 zbx_srv: "zabbix.egs.kz"
 zbx_proxy: ""
 zabbix_agent_tls: True
