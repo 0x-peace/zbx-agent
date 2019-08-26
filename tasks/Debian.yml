@@ -3,18 +3,17 @@
   apt:
     deb: "{{ zabbix_repo }}/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-3+{{ ansible_distribution_release }}_all.deb"
 
-- name: Add zabbix repository
-  apt_repository:
-    repo: '{{ item }}'
-    state: present
-  with_items:
-    - "deb http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
-    - "deb-src http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
-
 - name: Install zabbix agent
   apt:
     name:
       - zabbix-agent
       - openssl
+    state: present
+    update_cache: yes
+
+- name: Install zabbix register dependency
+  apt:
+    name:
+      - python-pip
     state: present
     update_cache: yes
