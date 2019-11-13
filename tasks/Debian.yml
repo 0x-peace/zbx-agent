@@ -1,19 +1,23 @@
 ---
+- name: print
+  debug:
+    msg: "{{ zabbix_repo }}"
+
 - name: Install zabbix repo
   apt:
-    deb: "{{ zabbix_repo }}/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-3+{{ ansible_distribution_release }}_all.deb"
-
-- name: Install zabbix agent
-  apt:
-    name:
-      - zabbix-agent
-      - openssl
+    deb: "{{ zabbix_repo }}"
     state: present
-    update_cache: yes
 
 - name: Install zabbix register dependency
   apt:
     name:
       - python-pip
+      - openssl
+    state: present
+    update_cache: yes
+
+- name: Install zabbix agent "{{ zabbix_version }}"
+  apt:
+    name: zabbix-agent
     state: present
     update_cache: yes
