@@ -1,3 +1,2 @@
 ---
-zabbix_repo_prefix: "http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }}/pool/main/z/zabbix-release"
-zabbix_repo: "{{ zabbix_repo_prefix }}/zabbix-release_{{ zabbix_version }}-2+{{ ansible_distribution_release }}_all.deb"
+zabbix_repo: "http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution|lower }}"
