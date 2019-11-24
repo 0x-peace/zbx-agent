@@ -2,15 +2,18 @@ Role Name
 =========
 
 Installing Zabbix agent.
-Add space
 
-OS Platforms
+Dependencies
 ------------
-| OS     | name   |
-| ------ | ------ |
-| Ubuntu | bionic |
-| Ubuntu | xenial |
-| Centos | 7      |
+
+No
+
+Requirements
+------------
+
+python >= 2.6
+zabbix-api >= 0.5.3
+
 
 Role Variables
 --------------
