@@ -1,6 +1,6 @@
 ---
-zabbix_version: "4.0"
-zabbix_version_el: "4.0-1.el7"
+zabbix_version: "4.4"
+zabbix_version_el: "4.4-1.el7"
 zbx_srv: "zabbix.egs.kz"
 zbx_proxy: ""
 zabbix_agent_tls: True
