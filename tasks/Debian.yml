@@ -1,7 +1,7 @@
 ---
 - name: Install zabbix repo
   apt:
-    deb: "{{ zabbix_repo }}/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
+    deb: "{{ zabbix_repo }}/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-2+{{ ansible_distribution_release }}_all.deb"
 
 - name: Install zabbix agent
   apt:
