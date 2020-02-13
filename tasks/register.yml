@@ -19,7 +19,7 @@
     login_user: "{{ zabbix_server_user }}"
     login_password: "{{ zabbix_server_pass }}"
     host_name: "{{ ansible_fqdn }}"
-    visible_name: "{{ ansible_fqdn }}"
+    visible_name: "{{ ansible_nodename }}"
     host_groups: "{{ item.host_groups }}"
     link_templates: "{{ item.host_templates }}"
     status: enabled
