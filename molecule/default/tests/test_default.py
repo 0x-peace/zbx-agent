@@ -19,4 +19,3 @@ def test_hosts_file(host):
 def test_zabbix_agent_install(host):
     zabbix_agent = host.package('zabbix-agent')
     assert zabbix_agent.is_installed
-
