@@ -1,4 +1,3 @@
 ---
-zabbix_version: "4.0"
 zabbix_repo_prefix: "http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/{{ ansible_distribution_major_version }}"
 zabbix_repo: "{{ zabbix_repo_prefix }}/x86_64"
